@@ -15,7 +15,7 @@
   songtypereplace="24" mode="tekstimage" tekst="ZuidWest Update met Jos Geelhoed" image="http://localhost/update.png"
   songtypereplace="23" mode="image" image="http://localhost/commercials.png"
   
-- name: Fallback ((tekst, image of tekstimage, nowonair)
+- name: Fallback (tekst, image of tekstimage, nowonair)
   fallback="nowonair"
 
 - name: Complete overrule
