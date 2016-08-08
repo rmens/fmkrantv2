@@ -1,0 +1,19 @@
+- name: XML-bestand met playlist
+  playlisturl="http://www.zuidwesttv.nl/teksttv/playlist.xml"
+
+- name: XML-bestand met programmering
+  programmeringurl="http://www.zuidwesttv.nl/teksttv/fmprogrammering.php"
+
+- name: Toon deze songtypes wel
+  songtypetoon="1,2,3,4,5,6"
+
+- name: Toon deze songtypes nooit
+  songtypehide="8,9,10,13"
+
+- name: Vervang type door custom tekst of image (tekst, image of tekstimage)
+  songtypereplace="20,21,22" mode="tekst" tekst="ZuidWest FM Nieuws, weer en verkeer"
+  songtypereplace="24" mode="tekstimage" tekst="ZuidWest Update met Jos Geelhoed" image="http://localhost/update.png"
+  songtypereplace="23" mode="image" image="http://localhost/commercials.png"
+
+- name: Complete overrule
+  overrule="0" mode="image" image="http://localhost/commercials.png"
