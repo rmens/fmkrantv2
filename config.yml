@@ -3,6 +3,9 @@
 
 - name: XML-bestand met programmering
   programmeringurl="http://www.zuidwesttv.nl/teksttv/fmprogrammering.php"
+  
+- name: Fallback (tekst, image of tekstimage, nowonair)
+  fallback="nowonair"
 
 - name: Toon deze songtypes wel
   songtypetoon="1,2,3,4,5,6"
@@ -14,9 +17,6 @@
   songtypereplace="20,21,22" mode="tekst" tekst="ZuidWest FM Nieuws, weer en verkeer"
   songtypereplace="24" mode="tekstimage" tekst="ZuidWest Update met Jos Geelhoed" image="http://localhost/hoofdfotojos.png"
   songtypereplace="23" mode="image" image="http://localhost/commercials.png"
-  
-- name: Fallback (tekst, image of tekstimage, nowonair)
-  fallback="nowonair"
 
-- name: Complete overrule
+- name: Complete overrule (tekst, image of tekstimage, nowonair)
   overrule="0" mode="image" image="http://localhost/commercials.png"
