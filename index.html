@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>TV Player</title>
+   <link rel="stylesheet" href="styles/styles.css" />
+   <link rel="shortcut icon" href="http://www.soor.nl/" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+   <div class="wrapper">
+
+
+      <div class="nowplaying">
+         <!-- NowPlaying -->
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+         <script>
+         var lastTrack;
+
+         $(function(){
+            window.setInterval(getTrackInfo, 20*100);
+            getTrackInfo();
+         });
+
+         function getTrackInfo() {
+            $.ajax('nowplaying.txt', {
+               success: function(data) {
+                  if(lastTrack !== data) {
+                     $('.nowplaying-cover').empty();
+                     $('.nowplaying-title').text();
+                     $('.nowplaying-artist').text();
+                     lastTrack = data;
+                     if(data.indexOf(' - ') === -1) {
+                        $('.nowplaying-artist').text(data);
+                        return;
+                     }
+                     data = data.split(' - ');
+                     $('.nowplaying-title').text(data[1].trim());
+                     $('.nowplaying-artist').text(data[0].trim());
+                     getCover(data[0], data[1]);
+                  }
+               }
+            });
+         }
+
+         function getCover(artist, track) {
+            $.ajax('http://ws.audioscrobbler.com/2.0/', {
+               data: {
+                  method: 'artist.getInfo',
+                  api_key: '9196a1183de5ebbc602689200fa58798',
+                  format: 'json',
+                  artist: artist
+               },
+               success: function(data) {
+                  if(data.artist !== undefined) {
+                     var image = data.artist.image[data.artist.image.length - 2];
+                     var url = image['#text'].replace('http://', '');
+                     if(url.length > 0) {
+                        $('<img/>', {src: 'http://i1.wp.com/' + url + '?resize=300,300&zoom=2&strip=all'}).appendTo('.nowplaying-cover');
+                     }
+                  }
+               }
+            });
+         }
+         </script>
+
+         <div class="nowplaying-cover"></div>
+         <div class="nowplaying-track">
+         	<p>je luistert naar <span class="nowplaying-artist"></span> met <span class="nowplaying-title"></span>.</p>
+         </div>
+         <!-- /NowPlaying-->
+
+      </div>
+
+   </div>
+
+</body>
+</html>
