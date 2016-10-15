@@ -22,11 +22,16 @@ songtypehide:
 songtypereplace:
   - replace: [20, 21, 22]
     text: 'ZuidWest FM Nieuws, weer en verkeer'
+ - replace: [22]
+    text: 'ZuidWest Verkeer - Powered by ANWB'
+    image: 'http://localhost/anwbpromo.png'
+    imagemode: cover
   - replace: [24]
     text: 'ZuidWest Update met Jos Geelhoed'
     image: 'http://localhost/hoofdfotojos.png'
   - replace: [23]
     image: http://localhost/commercials.png
+    imagemode: fullscreen 
 
 # Complete overrule (tekst, image of tekstimage, nowonair)
 overrules:
